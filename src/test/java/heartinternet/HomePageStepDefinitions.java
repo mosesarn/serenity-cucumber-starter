@@ -18,12 +18,12 @@ public class HomePageStepDefinitions {
     public void daniel_is_on_the_heart_internet_homepage() {
         navigate.toTheHomePage();
     }
-    List<PricePackage> visiblePricePackage;
-    PriceListPageComponent priceList;
+//    List<PricePackage> visiblePricePackage;
+//    PriceListPageComponent priceList;
 
     @When("he views the currently available packages")
     public void he_views_the_currently_available_packages() {
-        visiblePricePackage = priceList.currentOffers();
+       // visiblePricePackage = priceList.currentOffers();
 
     }
     @Then("he should be presented with")
