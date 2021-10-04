@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actions.OpenUrl;
+import net.serenitybdd.screenplay.questions.Text;
 import net.serenitybdd.screenplay.questions.page.TheWebPage;
 import net.serenitybdd.screenplay.questions.targets.TheTarget;
 import net.thucydides.core.annotations.Managed;
@@ -48,6 +49,18 @@ public class WhenPlanningATrip {
         moses.should(
                 seeThat(
                         TheTarget.textOf(SearchResultsPage.SEARCH_RESULTS_HEADING), equalTo("Search: Waterloo")
+                ));
+    }
+    @Test
+    public void should_list_all_relavent_station_information(){
+        moses.attemptsTo(Open.browserOn().the(TFLHomePage.class),
+                Click.on(CookiesDialog.ACCEPT_ALL_COOKIES),
+                Click.on(CookiesDialog.DONE),
+                Enter.theValue("jubilee").into(TFLHomePage.SEARCH).thenHit(Keys.ENTER)
+        );
+        moses.should(
+                seeThat(
+                        Text.of(SearchResultsPage.FIRST_ARTICLE_HEADING).asAString(), containsString("Jubilee Greenway")
                 ));
     }
     @Test
